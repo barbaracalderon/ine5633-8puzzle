@@ -154,3 +154,25 @@ class Puzzle8:
         nodos_abertos.append(caminho)
         self.set_nodos_abertos(nodos_abertos)
 
+    def ordena_nodos_abertos(self):
+        # Ordenação de acordo com o custo total
+        nodos_abertos = self.get_nodos_abertos()
+        menor_custo_total_ate_agora = nodos_abertos[0][-1]
+        indice_nodo_menor_custo_total_ate_agora = 0
+        nodo_aberto_com_menor_custo_total = nodos_abertos[0]
+        for i, value in enumerate(nodos_abertos):
+            # caminho = value[0]
+            # custo = value[1]
+            # heuristica = value[2]
+            custo_total_nodo_atual = value[3]
+            if custo_total_nodo_atual < menor_custo_total_ate_agora:
+                menor_custo_total_ate_agora = custo_total_nodo_atual
+                indice_nodo_menor_custo_total_ate_agora = i
+                nodo_aberto_com_menor_custo_total = value
+        nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
+        nodos_abertos[0] = nodo_aberto_com_menor_custo_total
+        self.set_nodos_abertos(nodos_abertos)
+
+
+
+
