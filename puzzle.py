@@ -100,241 +100,42 @@ class Puzzle8:
                 ordem = i
         nodos_filhos = [
             [
-                [
-                    pai[1], pai[0], pai[2], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]
-                ],
-                [
-                    pai[3], pai[1], pai[2], pai[0], pai[4], pai[5], pai[6], pai[7], pai[8]
-                ]
+                [pai[1], pai[0], pai[2], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[3], pai[1], pai[2], pai[0], pai[4], pai[5], pai[6], pai[7], pai[8]]
             ],
             [
-                [
-                    pai[1], pai[0], pai[2], pai[3], pai[4], pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8]
-                ],
-                [
-                    pai[0],
-                    pai[2],
-                    pai[1],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[4],
-                    pai[2],
-                    pai[3],
-                    pai[1],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8]
-                ]
+                [pai[1], pai[0], pai[2], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[2], pai[1], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[4], pai[2], pai[3], pai[1], pai[5], pai[6], pai[7], pai[8]]
             ],
             [
-                [
-                    pai[0],
-                    pai[2],
-                    pai[1],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[5],
-                    pai[3],
-                    pai[4],
-                    pai[2],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ]
+                [pai[0], pai[2], pai[1], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[5], pai[3], pai[4], pai[2], pai[6], pai[7], pai[8]]
             ],
             [
-                [
-                    pai[3],
-                    pai[1],
-                    pai[2],
-                    pai[0],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[6],
-                    pai[4],
-                    pai[5],
-                    pai[3],
-                    pai[7],
-                    pai[8],
-                ]
+                [pai[3], pai[1], pai[2], pai[0], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[6], pai[4], pai[5], pai[3], pai[7], pai[8]]
             ],
             [
-                [
-                    pai[0],
-                    pai[4],
-                    pai[2],
-                    pai[3],
-                    pai[1],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[4],
-                    pai[3],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[5],
-                    pai[4],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[7],
-                    pai[5],
-                    pai[6],
-                    pai[4],
-                    pai[8],
-                ]
+                [pai[0], pai[4], pai[2], pai[3], pai[1], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[4], pai[3], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[5], pai[4], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[7], pai[5], pai[6], pai[4], pai[8]]
             ],
             [
-                [
-                    pai[0],
-                    pai[1],
-                    pai[5],
-                    pai[3],
-                    pai[4],
-                    pai[2],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[5],
-                    pai[4],
-                    pai[6],
-                    pai[7],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[8],
-                    pai[6],
-                    pai[7],
-                    pai[5],
-                ]
+                [pai[0], pai[1], pai[5], pai[3], pai[4], pai[2], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[5], pai[4], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[8], pai[6], pai[7],  pai[5]]
             ],
             [
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[7],
-                    pai[5],
-                    pai[6],
-                    pai[4],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[7],
-                    pai[6],
-                    pai[8],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[8],
-                    pai[7],
-                ]
+                [pai[0], pai[1], pai[2], pai[3], pai[7], pai[5], pai[6], pai[4], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[7], pai[6], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[6], pai[8], pai[7]]
             ],
             [
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[8],
-                    pai[6],
-                    pai[7],
-                    pai[5],
-                ],
-                [
-                    pai[0],
-                    pai[1],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[8],
-                    pai[7],
-                ]
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[8], pai[6], pai[7], pai[5]],
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[6], pai[8], pai[7]]
             ]
         ]
         return nodos_filhos[ordem]
