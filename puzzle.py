@@ -25,6 +25,9 @@ class Puzzle8:
     def set_estado_inicial(self, estado_inicial):
         self.estado_inicial = estado_inicial
 
+    def get_metodo_utilizado(self):
+        return self.metodo_utilizado
+
     def get_nodos_abertos(self):
         return self.nodos_abertos
 
@@ -38,9 +41,6 @@ class Puzzle8:
         self.nodos_fechados = nodos_fechados
 
     def tem_abertos(self):
-        # if len(self.nodos_abertos) > 0:
-        #   return True
-        #return False
         return len(self.get_nodos_abertos()) > 0
 
     def get_total_nodos_abertos(self):
@@ -50,9 +50,6 @@ class Puzzle8:
         return len(self.get_nodos_fechados())
 
     def menor_custo_abertos(self):
-        # nodos_abertos_em_ordem = self.ordena_nodos_abertos() # Teoricamente já está ordenado.
-        # self.set_nodos_abertos(nodos_abertos_em_ordem)
-        # return nodos_abertos_em_ordem[0]
         self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0] - 1)]
         return self.nodo_da_vez
 
@@ -62,35 +59,31 @@ class Puzzle8:
         return nodos_abertos_em_ordem
 
     def eh_nodo_objetivo(self, nodo_da_vez):
-        # nodo_objetivo = self.get_estado_final()
-        # if nodo_da_vez == nodo_objetivo:
-        #    return True
-        # return False
-        return nodo_da_vez == self.get_estado_final() # Existe comparação de listas, assim?
+        return nodo_da_vez == self.get_estado_final()
 
     def resultado(self):
         return self.get_nodos_abertos()[0]
     
     def tamanho_do_caminho_final(self):
-        return self.get_nodos_abertos()[1] # Criei este método.
+        return self.get_nodos_abertos()[1]
 
-    def esta_em_nodos_abertos(self, nodo_filho): # reescrevendo o método acima
+    def esta_em_nodos_abertos(self, nodo_filho):
         if len(self.get_nodos_abertos()) == 0:
             return False
         for i in range(len(self.get_nodos_abertos())):
-            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) -1]: # "in" funciona?
+            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) - 1]:
                 return True
         return False
 
-    def esta_em_nodos_fechados(self, nodo_filho): # reescrevendo o método acima
+    def esta_em_nodos_fechados(self, nodo_filho):
         if len(self.nodos_fechados) == 0:
             return False
         for i in range(len(self.get_nodos_fechados())):
-            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) -1]: # "in" funciona?
+            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) - 1]:
                 return True
         return False
     
-    def atribui_custos_ao_nodo(nodo_filho):
+    def atribui_custos_ao_nodo(self, nodo_filho):
         metodo = self.get_metodo_utilizado()
         caminho = self.get_nodos_abertos()[0]
         caminho[0].append(nodo_filho)
@@ -186,4 +179,31 @@ class Puzzle8:
             ]
         ]
         return nodos_filhos[ordem]
+
+    def coloca_em_abertos(self, caminho):
+        nodos_abertos = self.get_nodos_abertos()
+        nodos_abertos.append(caminho)
+        self.set_nodos_abertos(nodos_abertos)
+
+    def ordena_nodos_abertos(self):
+        # Ordenação de acordo com o custo total
+        nodos_abertos = self.get_nodos_abertos()
+        menor_custo_total_ate_agora = nodos_abertos[0][-1]
+        indice_nodo_menor_custo_total_ate_agora = 0
+        nodo_aberto_com_menor_custo_total = nodos_abertos[0]
+        for i, value in enumerate(nodos_abertos):
+            # caminho = value[0]
+            # custo = value[1]
+            # heuristica = value[2]
+            custo_total_nodo_atual = value[3]
+            if custo_total_nodo_atual < menor_custo_total_ate_agora:
+                menor_custo_total_ate_agora = custo_total_nodo_atual
+                indice_nodo_menor_custo_total_ate_agora = i
+                nodo_aberto_com_menor_custo_total = value
+        nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
+        nodos_abertos[0] = nodo_aberto_com_menor_custo_total
+        self.set_nodos_abertos(nodos_abertos)
+
+
+
 
