@@ -102,15 +102,15 @@ class Puzzle8:
                 caminho[3] = caminho[1] + heuristica
         return caminho
                 
-    def calcula_heuristica_simples(nodo_filho):
+    def calcula_heuristica_simples(self, nodo_filho):
         final = self.get_estado_final()
         heuristica = 0
         for i in range(9):
             if final[i] != 9 and final[i] != nodo_filho[i]:
-                heuristica ++
+                heuristica += 1
         return heuristica
     
-    def calcula_heuristica_precisa(nodo_filho):
+    def calcula_heuristica_precisa(self, nodo_filho):
         matriz_diferenca = [
             [0, 1, 2, 1, 2, 3, 2, 3, 4],
             [1, 0, 1, 2, 1, 2, 3, 2, 3],
@@ -129,7 +129,7 @@ class Puzzle8:
                 for j in range(9):
                     if nodo_filho[j] == final[i]:
                         diferenca = matriz_diferenca[i][j]
-                        heuristica += heuristica
+                        heuristica += diferenca
                         break
         return heuristica
 
