@@ -8,6 +8,7 @@ from puzzle import Puzzle8
 configuracao_inicial = [1, 4, 5, 8, 9, 2, 3, 7, 6]
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 metodo_utilizado = 1
+
 # método 0: custo uniforme (sem heurística)
 # método 1: A* com heurística simples
 # método 2: A* com heurística mais precisa que conseguirem
@@ -16,31 +17,33 @@ puzzle = Puzzle8(configuracao_inicial, configuracao_final, metodo_utilizado)
 puzzle.set_nodos_abertos(configuracao_inicial)
 puzzle.set_nodos_fechados([])
 continua = True
-while (continua and puzzle.tem_abertos()):
+
+while continua and puzzle.tem_abertos():
     nodo_da_vez = puzzle.menor_custo_abertos()
-    if (puzzle.eh_nodo_objetivo(nodo_da_vez)):
-        print("Caminho Final: ", puzzle.resultado())
-        print("Tamanho do caminho: ", tamanho_do_caminho_final())
-        print("Total de Nodos Abertos: ", puzzle.get_total_nodos_abertos())
-        print("Nodos Abertos: ", puzzle.get_nodos_abertos())
-        print("Total de Nodos Fechados: ", puzzle.get_total_nodos_fechados())
-        print("Nodos Fechados: ", puzzle.get_nodos_fechados())
+    if puzzle.eh_nodo_objetivo(nodo_da_vez):
+        print(f'Caminho final: {puzzle.resultado()}')
+        print(f'Tamanho do caminho: {puzzle.tamanho_do_caminho_final()}')
+        print(f'Total de nodos abertos: {puzzle.get_nodos_abertos()}')
+        print(f'Nodos abertos: {puzzle.get_nodos_abertos()}')
+        print(f'Total de nodos fechados: {puzzle.get_total_nodos_fechados()}')
+        print(f'Nodos fechados: {puzzle.get_nodos_fechados()}')
         continua = False
     else:
         filhos = puzzle.gera_nodos_filhos(nodo_da_vez)
-        for i in length(filhos):
-            if (not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i])):
-                puzzle.atribui_custos_ao_nodo(filhos[i])**
-                puzzle.coloca_em_Abertos(filhos[i])
+        for i in range(len(filhos)):
+            if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
+                puzzle.atribui_custos_ao_nodo(filhos[i]) ##
+                puzzle.coloca_em_abertos(filhos[i]) ##
             else:
-                if (puzzle.esta_em_Abertos(filhos[i])):
-                    puzzle.avalia_substituicao_Abertos(filhos[i])
+                if puzzle.esta_em_abertos(filhos[i]):
+                    puzzle.avalia_substituicao_em_abertos(filhos[i])
                 else:
                     # puzzle.avalia_substituicao_Fechados(filhos[i]) # Falar com professor.
                     pass
-        puzzle.retira_de_Abertos_coloca_em_Fechados(nodo_da_vez)
+        puzzle.retira_de_abertos_coloca_em_Fechados(nodo_da_vez)
         # puzzle.ordena_Abertos()
-if continua == True:
+
+if continua is True:
     print("Falha")
 del puzzle
 gc.collect()

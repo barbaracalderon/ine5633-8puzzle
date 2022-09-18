@@ -41,7 +41,7 @@ class Puzzle8:
         # if len(self.nodos_abertos) > 0:
         #   return True
         #return False
-        return len(self.nodos_abertos > 0)
+        return len(self.get_nodos_abertos()) > 0
 
     def get_total_nodos_abertos(self):
         return len(self.get_nodos_abertos())
@@ -53,7 +53,7 @@ class Puzzle8:
         # nodos_abertos_em_ordem = self.ordena_nodos_abertos() # Teoricamente já está ordenado.
         # self.set_nodos_abertos(nodos_abertos_em_ordem)
         # return nodos_abertos_em_ordem[0]
-        self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0] -1)]
+        self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0] - 1)]
         return self.nodo_da_vez
 
     def ordena_nodos_abertos(self):
@@ -77,21 +77,21 @@ class Puzzle8:
     def esta_em_nodos_abertos(self, nodo_filho): # reescrevendo o método acima
         if len(self.get_nodos_abertos()) == 0:
             return False
-        for i in len(self.nodos_abertos):
-            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) -1] # "in" funciona?
+        for i in range(len(self.get_nodos_abertos())):
+            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) -1]: # "in" funciona?
                 return True
         return False
 
     def esta_em_nodos_fechados(self, nodo_filho): # reescrevendo o método acima
         if len(self.nodos_fechados) == 0:
             return False
-        for i in len(self.nodos_fechados):
-            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) -1] # "in" funciona?
+        for i in range(len(self.get_nodos_fechados())):
+            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) -1]: # "in" funciona?
                 return True
         return False
     
     def atribui_custos_ao_nodo(nodo_filho):
-        
+        pass
 
     def gera_nodos_filhos(self, nodo_da_vez):
         pai = nodo_da_vez
@@ -101,36 +101,15 @@ class Puzzle8:
         nodos_filhos = [
             [
                 [
-                    pai[1],
-                    pai[0],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8]
+                    pai[1], pai[0], pai[2], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]
                 ],
                 [
-                    pai[3],
-                    pai[1],
-                    pai[2],
-                    pai[0],
-                    pai[4],
-                    pai[5],
-                    pai[6],
-                    pai[7],
-                    pai[8]
+                    pai[3], pai[1], pai[2], pai[0], pai[4], pai[5], pai[6], pai[7], pai[8]
                 ]
             ],
             [
                 [
-                    pai[1],
-                    pai[0],
-                    pai[2],
-                    pai[3],
-                    pai[4],
-                    pai[5],
+                    pai[1], pai[0], pai[2], pai[3], pai[4], pai[5],
                     pai[6],
                     pai[7],
                     pai[8]
