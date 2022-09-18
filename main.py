@@ -19,6 +19,7 @@ puzzle.set_nodos_fechados([])
 continua = True
 
 while continua and puzzle.tem_abertos():
+    puzzle.busca_nodo_menor_custo()  ####
     nodo_da_vez = puzzle.menor_custo_abertos()
     if puzzle.eh_nodo_objetivo(nodo_da_vez):
         print(f'Caminho final: {puzzle.resultado()}')
@@ -41,7 +42,6 @@ while continua and puzzle.tem_abertos():
                     # puzzle.avalia_substituicao_Fechados(filhos[i]) # Falar com professor.
                     pass
         puzzle.retira_de_abertos_coloca_em_fechados(nodo_da_vez) ###
-        puzzle.ordena_nodos_abertos()
 
 if continua is True:
     print("Falha")

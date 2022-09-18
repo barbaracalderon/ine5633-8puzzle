@@ -185,7 +185,7 @@ class Puzzle8:
         nodos_abertos.append(caminho)
         self.set_nodos_abertos(nodos_abertos)
 
-    def ordena_nodos_abertos(self):
+    def busca_nodo_menor_custo(self):
         # Ordenação de acordo com o custo total
         nodos_abertos = self.get_nodos_abertos()
         menor_custo_total_ate_agora = nodos_abertos[0][-1]
