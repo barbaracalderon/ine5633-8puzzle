@@ -109,8 +109,36 @@ class Puzzle8:
                 caminho[3] = caminho[1] + heuristica
         return caminho
                 
-            
-            
+    def calcula_heuristica_simples(nodo_filho):
+        final = self.get_estado_final()
+        heuristica = 0
+        for i in range(9):
+            if final[i] != 9 and final[i] != nodo_filho[i]:
+                heuristica ++
+        return heuristica
+    
+    def calcula_heuristica_precisa(nodo_filho):
+        matriz_diferenca = [
+            [0, 1, 2, 1, 2, 3, 2, 3, 4],
+            [1, 0, 1, 2, 1, 2, 3, 2, 3],
+            [2, 1, 0, 3, 2, 1, 4, 3, 2],
+            [1, 2, 3, 0, 1, 2, 1, 2, 3],
+            [2, 1, 2, 1, 0, 1, 2, 1, 2],
+            [3, 2, 1, 2, 1, 0, 3, 2, 1],
+            [2, 3, 4, 1, 2, 3, 0, 1, 2],
+            [3, 2, 3, 2, 1, 2, 1, 0, 1],
+            [4, 3, 2, 3, 2, 1, 2, 1, 0]
+            ]
+        final = self.get_estado_final()
+        heuristica = 0
+        for i in range(9):
+            if final[i] != 9:
+                for j in range(9):
+                    if nodo_filho[j] == final[i]:
+                        diferenca = matriz_diferenca[i][j]
+                        heuristica += heuristica
+                        break
+        return heuristica
 
     def gera_nodos_filhos(self, nodo_da_vez):
         pai = nodo_da_vez
