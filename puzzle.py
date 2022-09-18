@@ -67,7 +67,7 @@ class Puzzle8:
     def gera_nodos_filhos(self, nodo_da_vez):
         pai = nodo_da_vez
         for i in range(9):
-            if pai[i] == '8':
+            if pai[i] == 9:
                 ordem = i
         nodos_filhos = [
             [
