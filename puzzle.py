@@ -27,6 +27,7 @@ class Puzzle8:
     def set_nodos_abertos(self, nodos_abertos):
         self.nodos_abertos = nodos_abertos
 
+
     def get_nodos_fechados(self):
         return self.nodos_fechados
 
@@ -37,6 +38,12 @@ class Puzzle8:
         if len(self.nodos_abertos) > 0:
             return True
         return False
+
+    def get_total_nodos_abertos(self):
+        return len(self.get_nodos_abertos())
+
+    def get_total_nodos_fechados(self):
+        return len(self.get_nodos_fechados())
 
     def menor_custo_abertos(self):
         nodos_abertos_em_ordem = self.ordena_nodos_abertos()
@@ -323,3 +330,13 @@ class Puzzle8:
             ]
         ]
         return nodos_filhos[ordem]
+
+    def esta_em_nodos_abertos(self, nodos_filhos):
+        if nodos_filhos in self.get_nodos_abertos():
+            return True
+        return False
+
+    def esta_em_nodos_fechados(self, nodos_filhos):
+        if nodos_filhos in self.get_nodos_fechados:
+            return True
+        return False

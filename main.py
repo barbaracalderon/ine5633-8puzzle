@@ -22,12 +22,12 @@ while continuar and puzzle.tem_abertos():
         print(f'Nodos Fechados: {puzzle.get_nodos_fechados()}')
         continuar = False
     else:
-        nodos_filhos = puzzle.gera_filhos(nodo_da_vez)
-        for i in len(nodos_filhos):
-            if not puzzle.esta_em_abertos(nodos_filhos[i]) and not puzzle.esta_em_fechados(nodos_filhos[i]):
+        nodos_filhos = puzzle.gera_nodos_filhos(nodo_da_vez)
+        for i in range(len(nodos_filhos)):
+            if not puzzle.esta_em_nodos_abertos(nodos_filhos[i]) and not puzzle.esta_em_nodos_fechados(nodos_filhos[i]):
                 puzzle.atribui_custos_ao_nodo(nodo_da_vez)
             else:
-                if puzzle.esta_em_abertos(nodos_filhos[i]):
+                if puzzle.esta_em_nodos_abertos(nodos_filhos[i]):
                     puzzle.avalia_substituicao_nodos_abertos(nodo_da_vez)
                 else:
                     puzzle.avalia_substituicao_nodos_fechados(nodo_da_vez)
