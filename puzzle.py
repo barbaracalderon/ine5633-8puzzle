@@ -53,7 +53,7 @@ class Puzzle8:
         # nodos_abertos_em_ordem = self.ordena_nodos_abertos() # Teoricamente já está ordenado.
         # self.set_nodos_abertos(nodos_abertos_em_ordem)
         # return nodos_abertos_em_ordem[0]
-        self.nodo_da_vez = nodos_abertos[0][len(nodos_abertos[0] -1)]
+        self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0] -1)]
         return self.nodo_da_vez
 
     def ordena_nodos_abertos(self):
@@ -69,36 +69,24 @@ class Puzzle8:
         return nodo_da_vez == self.get_estado_final() # Existe comparação de listas, assim?
 
     def resultado(self):
-        # pass
-        return self.nodo_da_vez
+        return self.get_nodos_abertos()[0]
     
     def tamanho_do_caminho_final(self):
-        return self.nodo_da_vez[1] # Criei este método.
-    
-
-    def esta_em_nodos_abertos(self, nodos_filhos):
-        if nodos_filhos in self.get_nodos_abertos():
-            return True
-        return False
+        return self.get_nodos_abertos()[1] # Criei este método.
 
     def esta_em_nodos_abertos(self, nodo_filho): # reescrevendo o método acima
-        if len(self.nodos_abertos) == 0:
+        if len(self.get_nodos_abertos()) == 0:
             return False
         for i in len(self.nodos_abertos):
-            if nodo_filho in self.nodos_abertos[i][len(self.nodos_abertos[i]) -1] # "in" funciona?
+            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) -1] # "in" funciona?
                 return True
         return False
 
-    def esta_em_nodos_fechados(self, nodos_filhos):
-        if nodos_filhos in self.get_nodos_fechados:
-            return True
-        return False
-    
     def esta_em_nodos_fechados(self, nodo_filho): # reescrevendo o método acima
         if len(self.nodos_fechados) == 0:
             return False
         for i in len(self.nodos_fechados):
-            if nodo_filho in self.nodos_fechados[i][len(self.nodos_fechados[i]) -1] # "in" funciona?
+            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) -1] # "in" funciona?
                 return True
         return False
     
