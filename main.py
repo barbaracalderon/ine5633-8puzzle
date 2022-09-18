@@ -33,7 +33,7 @@ while continua and puzzle.tem_abertos():
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
-                puzzle.coloca_em_abertos(caminho) ## Barbara
+                puzzle.coloca_em_abertos(caminho)
             else:
                 if puzzle.esta_em_abertos(filhos[i]):
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
