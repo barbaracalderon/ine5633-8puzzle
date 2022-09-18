@@ -91,7 +91,26 @@ class Puzzle8:
         return False
     
     def atribui_custos_ao_nodo(nodo_filho):
-        pass
+        metodo = self.get_metodo_utilizado()
+        caminho = self.get_nodos_abertos()[0]
+        caminho[0].append(nodo_filho)
+        caminho[1] += 1
+        caminho[3] += 1
+        if metodo == 0:
+            pass
+        else:
+            if metodo == 1:
+                heuristica = self.calcula_heuristica_simples(nodo_filho)
+                caminho[2] = heuristica
+                caminho[3] = caminho[1] + heuristica
+            else:
+                heuristica = self.calcula_heuristica_precisa(nodo_filho)
+                caminho[2] = heuristica
+                caminho[3] = caminho[1] + heuristica
+        return caminho
+                
+            
+            
 
     def gera_nodos_filhos(self, nodo_da_vez):
         pai = nodo_da_vez

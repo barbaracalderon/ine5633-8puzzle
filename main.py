@@ -32,16 +32,16 @@ while continua and puzzle.tem_abertos():
         filhos = puzzle.gera_nodos_filhos(nodo_da_vez)
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
-                puzzle.atribui_custos_ao_nodo(filhos[i]) ##
-                puzzle.coloca_em_abertos(filhos[i]) ##
+                caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
+                puzzle.coloca_em_abertos(caminho) ## Barbara
             else:
                 if puzzle.esta_em_abertos(filhos[i]):
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
                 else:
                     # puzzle.avalia_substituicao_Fechados(filhos[i]) # Falar com professor.
                     pass
-        puzzle.retira_de_abertos_coloca_em_Fechados(nodo_da_vez)
-        # puzzle.ordena_Abertos()
+        puzzle.retira_de_abertos_coloca_em_fechados(nodo_da_vez)
+        puzzle.ordena_abertos()
 
 if continua is True:
     print("Falha")
