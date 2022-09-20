@@ -37,11 +37,11 @@ while continua and puzzle.tem_abertos():
                 puzzle.coloca_em_abertos(caminho)
             else:
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
-                    puzzle.avalia_substituicao_em_abertos(filhos[i]) ### fiz
+                    puzzle.avalia_substituicao_em_abertos(filhos[i])
                 else:
-                    puzzle.avalia_substituicao_fechados(filhos[i]) ###
+                    puzzle.avalia_substituicao_fechados(filhos[i])
                     pass
-        puzzle.retira_de_abertos_coloca_em_fechados(nodo_da_vez) ###
+        puzzle.retira_de_abertos_coloca_em_fechados(nodo_da_vez)
 
 if continua is True:
     print("Falha")
