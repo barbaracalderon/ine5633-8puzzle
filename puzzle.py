@@ -230,3 +230,10 @@ class Puzzle8:
                     caminho_custoso = self.nodos_fechados.pop(i)
                     self.nodos_abertos.append(caminho_custoso) # retira fechados e coloca em abertos
                     break
+
+    def retira_de_abertos_coloca_em_fechados(self, nodo_da_vez):
+        nodos_abertos = self.get_nodos_abertos()
+        if nodo_da_vez in nodos_abertos:
+            nodo_removido_de_abertos = nodos_abertos.pop(0)
+            self.set_nodos_abertos(nodos_abertos)
+            self.set_nodos_fechados(nodo_removido_de_abertos)
