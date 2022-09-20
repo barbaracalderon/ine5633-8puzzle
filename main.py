@@ -39,7 +39,7 @@ while continua and puzzle.tem_abertos():
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
                     puzzle.avalia_substituicao_em_abertos(filhos[i]) ### fiz
                 else:
-                    # puzzle.avalia_substituicao_Fechados(filhos[i]) ###
+                    puzzle.avalia_substituicao_fechados(filhos[i]) ###
                     pass
         puzzle.retira_de_abertos_coloca_em_fechados(nodo_da_vez) ###
 

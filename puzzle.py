@@ -218,16 +218,15 @@ class Puzzle8:
                     self.nodos_abertos.append(caminho) # coloca o de menor custo em abertos
                     break
 
-    def avalia_substituicao_Fechados(self, filho):
-        for i in range(len(self.get_nodos_abertos())):
-            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) - 1] == filho:
-                custo_total_nodo_em_abertos = self.get_nodos_abertos()[i][3]
-                caminho = self.atribui_custos_ao_nodo(filho)
-                custo_total_nodo_filho = self.atribui_custos_ao_nodo(filho)[3]
-                if custo_total_nodo_em_abertos <= custo_total_nodo_filho:
+    def avalia_substituicao_fechados(self, nodo_filho):
+        for i in range(len(self.get_nodos_fechados())):
+            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) - 1] == nodo_filho:
+                custo_total_nodo_em_fechados = self.get_nodos_fechados()[i][3]
+                caminho = self.atribui_custos_ao_nodo(nodo_filho)
+                custo_total_nodo_filho = self.atribui_custos_ao_nodo(nodo_filho)[3]
+                if custo_total_nodo_em_fechados <= custo_total_nodo_filho:
                     break
                 else:
-                    caminho_custoso = self.nodos_abertos.pop(i)
-                    self.nodos_fechados.append(caminho_custoso) # retira abertos e coloca em fechados
-                    self.nodos_abertos.append(caminho) # coloca o de menor custo em abertos
+                    caminho_custoso = self.nodos_fechados.pop(i)
+                    self.nodos_abertos.append(caminho_custoso) # retira fechados e coloca em abertos
                     break
