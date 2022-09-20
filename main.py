@@ -14,6 +14,8 @@ metodo_utilizado = 1
 # método 2: A* com heurística mais precisa que conseguirem
 
 puzzle = Puzzle8(configuracao_inicial, configuracao_final, metodo_utilizado)
+heuristica = puzzle.atribui_custos_ao_nodo(configuracao_inicial)
+caminho_inicial = [configuração_inicial, 0, heuristica, heuristica]
 puzzle.set_nodos_abertos(configuracao_inicial)
 puzzle.set_nodos_fechados([])
 continua = True
