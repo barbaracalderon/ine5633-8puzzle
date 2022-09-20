@@ -5,28 +5,38 @@ from puzzle import Puzzle8
 # Jogo 8-puzzle com heurística
 # Barbara Calderon e Edmilson Domingues
 
-configuracao_inicial = [1, 4, 5, 8, 9, 2, 3, 7, 6]
+# configuracao_inicial = [1, 2, 3, 4, 9, 5, 7, 8, 6]
+configuracao_inicial = [1, 2, 3, 4, 5, 6, 7, 9, 8]
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-metodo_utilizado = 1
+metodo_utilizado = 2
 
 # método 0: custo uniforme (sem heurística)
 # método 1: A* com heurística simples
 # método 2: A* com heurística mais precisa que conseguirem
 
 puzzle = Puzzle8(configuracao_inicial, configuracao_final, metodo_utilizado)
-heuristica = puzzle.atribui_custos_ao_nodo(configuracao_inicial)
-caminho_inicial = [configuracao_inicial, 0, heuristica, heuristica]
-puzzle.set_nodos_abertos(configuracao_inicial)
+metodo = puzzle.get_metodo_utilizado()
+if metodo == 0:
+    heuristica = 0
+else:
+    if metodo == 1:
+        heuristica = puzzle.calcula_heuristica_simples(configuracao_inicial)
+    else:
+        heuristica = puzzle.calcula_heuristica_precisa(configuracao_inicial)
+caminho_inicial = [[[configuracao_inicial], 0, heuristica, heuristica]]
+puzzle.set_nodos_abertos(caminho_inicial) ## correção
 puzzle.set_nodos_fechados([])
 continua = True
 
 while continua and puzzle.tem_abertos():
     puzzle.busca_nodo_menor_custo()
-    nodo_da_vez = puzzle.menor_custo_abertos()
+    abertos = puzzle.get_nodos_abertos()
+    #nodo_da_vez = abertos[0][len(abertos[0]) -1]
+    nodo_da_vez = abertos[0][0][len(abertos[0][0])-1]
     if puzzle.eh_nodo_objetivo(nodo_da_vez):
         print(f'Caminho final: {puzzle.resultado()}')
         print(f'Tamanho do caminho: {puzzle.tamanho_do_caminho_final()}')
-        print(f'Total de nodos abertos: {puzzle.get_nodos_abertos()}')
+        print(f'Total de nodos abertos: {puzzle.get_total_nodos_abertos()}')
         print(f'Nodos abertos: {puzzle.get_nodos_abertos()}')
         print(f'Total de nodos fechados: {puzzle.get_total_nodos_fechados()}')
         print(f'Nodos fechados: {puzzle.get_nodos_fechados()}')

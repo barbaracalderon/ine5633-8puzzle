@@ -50,7 +50,7 @@ class Puzzle8:
         return len(self.get_nodos_fechados())
 
     def menor_custo_abertos(self):
-        self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0] - 1)]
+        self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0]) - 1]
         return self.nodo_da_vez
 
     def ordena_nodos_abertos(self):
@@ -65,13 +65,13 @@ class Puzzle8:
         return self.get_nodos_abertos()[0]
     
     def tamanho_do_caminho_final(self):
-        return self.get_nodos_abertos()[1]
+        return self.get_nodos_abertos()[0][1]
 
     def esta_em_nodos_abertos(self, nodo_filho):
         if len(self.get_nodos_abertos()) == 0:
             return False
         for i in range(len(self.get_nodos_abertos())):
-            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) - 1]:
+            if nodo_filho in self.get_nodos_abertos()[i][0][len(self.get_nodos_abertos()[i][0]) - 1]:
                 return True
         return False
 
@@ -90,7 +90,7 @@ class Puzzle8:
         caminho[1] += 1
         caminho[3] += 1
         if metodo == 0:
-            pass
+            heuristica = 0
         else:
             if metodo == 1:
                 heuristica = self.calcula_heuristica_simples(nodo_filho)
@@ -135,6 +135,7 @@ class Puzzle8:
 
     def gera_nodos_filhos(self, nodo_da_vez):
         pai = nodo_da_vez
+        print("Pai: ", pai)
         for i in range(9):
             if pai[i] == 9:
                 ordem = i
@@ -154,7 +155,7 @@ class Puzzle8:
             ],
             [
                 [pai[3], pai[1], pai[2], pai[0], pai[4], pai[5], pai[6], pai[7], pai[8]],
-                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[6], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[4], pai[3], pai[5], pai[6], pai[7], pai[8]],
                 [pai[0], pai[1], pai[2], pai[6], pai[4], pai[5], pai[3], pai[7], pai[8]]
             ],
             [
@@ -166,8 +167,11 @@ class Puzzle8:
             [
                 [pai[0], pai[1], pai[5], pai[3], pai[4], pai[2], pai[6], pai[7], pai[8]],
                 [pai[0], pai[1], pai[2], pai[3], pai[5], pai[4], pai[6], pai[7], pai[8]],
-                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[8], pai[6], pai[7],  pai[5]]
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[8], pai[6], pai[7], pai[5]]
             ],
+            [
+                [pai[0], pai[1], pai[2], pai[6], pai[7], pai[5], pai[3], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[7], pai[6], pai[8]]            ],
             [
                 [pai[0], pai[1], pai[2], pai[3], pai[7], pai[5], pai[6], pai[4], pai[8]],
                 [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[7], pai[6], pai[8]],
@@ -178,6 +182,7 @@ class Puzzle8:
                 [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[6], pai[8], pai[7]]
             ]
         ]
+        print("Nodos Filhos: ", nodos_filhos[ordem])
         return nodos_filhos[ordem]
 
     def coloca_em_abertos(self, caminho):
@@ -185,7 +190,7 @@ class Puzzle8:
         nodos_abertos.append(caminho)
         self.set_nodos_abertos(nodos_abertos)
 
-    def busca_nodo_menor_custo(self):
+    def aaa_busca_nodo_menor_custo(self):
         # Ordenação de acordo com o custo total
         nodos_abertos = self.get_nodos_abertos()
         menor_custo_total_ate_agora = nodos_abertos[0][-1]
@@ -202,6 +207,33 @@ class Puzzle8:
                 nodo_aberto_com_menor_custo_total = value
         nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
         nodos_abertos[0] = nodo_aberto_com_menor_custo_total
+        self.set_nodos_abertos(nodos_abertos)
+
+    def busca_nodo_menor_custo(self):
+        # Ordenação de acordo com o custo total
+        nodos_abertos = self.get_nodos_abertos()
+        ## menor_custo_total_ate_agora = nodos_abertos[0][-1]
+        menor_custo_total_ate_agora = nodos_abertos[0][3] ## Troquei.
+        indice_nodo_menor_custo_total_ate_agora = 0
+        nodo_aberto_com_menor_custo_total = nodos_abertos[0]
+        #for i, value in enumerate(nodos_abertos):
+        #    # caminho = value[0]
+        #    # custo = value[1]
+        #    # heuristica = value[2]
+        #      custo_total_nodo_atual = value[3]
+        for i in self.get_nodos_abertos():
+            # caminho = value[0]
+            # custo = value[1]
+            # heuristica = value[2]
+            custo_total_nodo_atual = i[3]
+            if custo_total_nodo_atual < menor_custo_total_ate_agora:
+                menor_custo_total_ate_agora = custo_total_nodo_atual
+                indice_nodo_menor_custo_total_ate_agora = i
+                #nodo_aberto_com_menor_custo_total = value
+                nodo_aberto_com_menor_custo_total = i
+        nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
+        # nodos_abertos[0] = nodo_aberto_com_menor_custo_total
+        nodos_abertos.insert(indice_nodo_menor_custo_total_ate_agora, nodo_aberto_com_menor_custo_total)
         self.set_nodos_abertos(nodos_abertos)
         
     def avalia_substituicao_em_abertos(self, nodo_filho):
