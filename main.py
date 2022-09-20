@@ -19,7 +19,7 @@ puzzle.set_nodos_fechados([])
 continua = True
 
 while continua and puzzle.tem_abertos():
-    puzzle.busca_nodo_menor_custo()  ####
+    puzzle.busca_nodo_menor_custo()
     nodo_da_vez = puzzle.menor_custo_abertos()
     if puzzle.eh_nodo_objetivo(nodo_da_vez):
         print(f'Caminho final: {puzzle.resultado()}')
