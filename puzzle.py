@@ -227,8 +227,8 @@ class Puzzle8:
                 if custo_total_nodo_em_fechados <= custo_total_nodo_filho:
                     break
                 else:
-                    caminho_custoso = self.nodos_fechados.pop(i)
-                    self.nodos_abertos.append(caminho_custoso) # retira fechados e coloca em abertos
+                    self.nodos_fechados.pop(i)
+                    self.nodos_abertos.append(caminho) # retira fechados e coloca em abertos
                     break
 
     def retira_de_abertos_coloca_em_fechados(self, nodo_da_vez):
