@@ -86,6 +86,7 @@ class Puzzle8:
     def atribui_custos_ao_nodo(self, nodo_filho):
         metodo = self.get_metodo_utilizado()
         caminho = self.get_nodos_abertos()[0]
+        print("Caminho ***: ", caminho)
         caminho[0].append(nodo_filho)
         caminho[1] += 1
         caminho[3] += 1
@@ -100,6 +101,7 @@ class Puzzle8:
                 heuristica = self.calcula_heuristica_precisa(nodo_filho)
                 caminho[2] = heuristica
                 caminho[3] = caminho[1] + heuristica
+        print("Caminho na atribuição de custos: ", caminho)
         return caminho
                 
     def calcula_heuristica_simples(self, nodo_filho):
@@ -189,7 +191,7 @@ class Puzzle8:
         nodos_abertos = self.get_nodos_abertos()
         nodos_abertos.append(caminho)
         self.set_nodos_abertos(nodos_abertos)
-
+        
     def aaa_busca_nodo_menor_custo(self):
         # Ordenação de acordo com o custo total
         nodos_abertos = self.get_nodos_abertos()
