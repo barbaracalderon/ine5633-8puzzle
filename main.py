@@ -35,6 +35,7 @@ while continua and puzzle.tem_abertos():
     estado = nodo_da_vez[0][len(nodo_da_vez[0]) -1]
     print("Estado: ", estado)
     if puzzle.eh_nodo_objetivo(estado):
+        print("---------------------------------------------")
         print(f'Caminho final: {puzzle.resultado()}')
         print(f'Tamanho do caminho: {puzzle.tamanho_do_caminho_final()}')
         print(f'Total de nodos abertos: {puzzle.get_total_nodos_abertos()}')
@@ -51,12 +52,12 @@ while continua and puzzle.tem_abertos():
         filhos = puzzle.gera_nodos_filhos(estado)
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
-                #print()
-                #print("contador i: ", i)
-                #print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
+                print()
+                print("contador i: ", i)
+                print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
-                #print("Nodos abertos 2: ", puzzle.get_nodos_abertos()) #errado
-                #print("Caminho novo: ", caminho)
+                print("Nodos abertos 2: ", puzzle.get_nodos_abertos()) #errado
+                print("Caminho novo: ", caminho)
                 puzzle.coloca_em_abertos(caminho) #
                 print("Nodos abertos : ", puzzle.get_nodos_abertos())
             else:

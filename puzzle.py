@@ -68,7 +68,7 @@ class Puzzle8:
         return nodo_da_vez == self.get_estado_final()
 
     def resultado(self):
-        return self.get_nodos_abertos()[0]
+        return self.get_nodo_da_vez()
     
     def tamanho_do_caminho_final(self):
         return self.get_nodos_abertos()[0][1]
@@ -99,7 +99,7 @@ class Puzzle8:
     def atribui_custos_ao_nodo(self, nodo_filho):
         metodo = self.get_metodo_utilizado()
         caminho = copy.deepcopy(self.get_nodo_da_vez())
-        print("Caminho antes: ", caminho)
+        #print("Caminho antes: ", caminho)
         caminho[0].append(nodo_filho)
         caminho[1] += 1
         caminho[3] += 1
@@ -114,7 +114,7 @@ class Puzzle8:
                 heuristica = self.calcula_heuristica_precisa(nodo_filho)
                 caminho[2] = heuristica
                 caminho[3] = caminho[1] + heuristica
-        print("Caminho depois: ", caminho)
+        #print("Caminho depois: ", caminho)
         return caminho
                 
     def calcula_heuristica_simples(self, nodo_filho):
@@ -250,6 +250,7 @@ class Puzzle8:
         nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
         #nodos_abertos[0] = nodo_aberto_com_menor_custo_total
         nodos_abertos.insert(0, nodo_aberto_com_menor_custo_total)
+        print("Cálculo nodos abertos: ", nodos_abertos)
         self.set_nodos_abertos(nodos_abertos)
         
     def avalia_substituicao_em_abertos(self, nodo_filho):
