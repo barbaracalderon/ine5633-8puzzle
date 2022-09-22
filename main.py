@@ -66,10 +66,11 @@ while continua and puzzle.tem_abertos():
                     puzzle.avalia_substituicao_fechados(filhos[i])
                     pass
             # break
-        break
+        print(f'Nodo da vez: {nodo_da_vez}')
         puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
 
 if continua is True:
     print("Falha")
 del puzzle
 gc.collect()
+

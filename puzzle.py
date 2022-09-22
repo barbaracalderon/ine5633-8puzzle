@@ -279,9 +279,5 @@ class Puzzle8:
                     self.nodos_abertos.append(caminho) # retira fechados e coloca em abertos
                     break
 
-    def retira_de_abertos_coloca_em_fechados(self, nodo_da_vez):
-        nodos_abertos = self.get_nodos_abertos()
-        if nodo_da_vez in nodos_abertos:
-            nodo_removido_de_abertos = nodos_abertos.pop(0)
-            self.set_nodos_abertos(nodos_abertos)
-            self.set_nodos_fechados(nodo_removido_de_abertos)
+    def retira_de_nodo_da_vez_coloca_em_fechados(self, nodo_da_vez):
+        self.nodos_fechados.append(nodo_da_vez)
