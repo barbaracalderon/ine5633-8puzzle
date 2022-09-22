@@ -87,7 +87,8 @@ class Puzzle8:
         for i in range(len(self.get_nodos_fechados())):
             print("Nodo_filho: ", nodo_filho)
             print("Nodos_fechados: ", self.get_nodos_fechados())
-            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[0][i]) - 1]:
+            print("I: ", i)
+            if nodo_filho in self.get_nodos_fechados()[i][0][len(self.get_nodos_fechados()[i][0]) - 1]: #$$
                 return True
         return False
     

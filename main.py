@@ -5,9 +5,8 @@ from puzzle import Puzzle8
 # Jogo 8-puzzle com heurística
 # Barbara Calderon e Edmilson Domingues
 
-# configuracao_inicial = [1, 2, 3, 4, 9, 5, 7, 8, 6]
-# configuracao_inicial = [1, 2, 3, 4, 5, 6, 9, 7, 8]
-configuracao_inicial = [1, 2, 3, 9, 5, 6, 4, 7, 8]
+# configuracao_inicial = [6, 7, 5, 1, 2, 3, 9, 4, 8] # benchmark professor (18 passos)
+configuracao_inicial = [1, 2, 3, 9, 5, 6, 4, 7, 8] # 3 passos. Deu certo.
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 metodo_utilizado = 2
 
