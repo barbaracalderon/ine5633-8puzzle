@@ -1,4 +1,4 @@
-
+import copy
 class Puzzle8:
 
     def __init__(self, estado_inicial, estado_final, metodo_utilizado):
@@ -98,7 +98,7 @@ class Puzzle8:
         
     def atribui_custos_ao_nodo(self, nodo_filho):
         metodo = self.get_metodo_utilizado()
-        caminho = self.get_nodo_da_vez()
+        caminho = copy.deepcopy(self.get_nodo_da_vez())
         print("Caminho antes: ", caminho)
         caminho[0].append(nodo_filho)
         caminho[1] += 1

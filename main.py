@@ -54,10 +54,10 @@ while continua and puzzle.tem_abertos():
                 print()
                 print("contador i: ", i)
                 print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
-                caminho2 = puzzle.atribui_custos_ao_nodo(filhos[i])
+                caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
                 print("Nodos abertos 2: ", puzzle.get_nodos_abertos()) #errado
                 #print("Caminho novo: ", caminho)
-                # puzzle.coloca_em_abertos(caminho) #
+                #puzzle.coloca_em_abertos(caminho) #
                 print("Nodos abertos 3: ", puzzle.get_nodos_abertos())
             else:
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
