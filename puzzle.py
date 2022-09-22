@@ -71,7 +71,7 @@ class Puzzle8:
         return self.get_nodo_da_vez()
     
     def tamanho_do_caminho_final(self):
-        return self.get_nodos_abertos()[0][1]
+        return self.get_nodo_da_vez()[1]
 
     def esta_em_nodos_abertos(self, nodo_filho):
         if len(self.get_nodos_abertos()) == 0:
@@ -85,7 +85,9 @@ class Puzzle8:
         if len(self.nodos_fechados) == 0:
             return False
         for i in range(len(self.get_nodos_fechados())):
-            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) - 1]:
+            print("Nodo_filho: ", nodo_filho)
+            print("Nodos_fechados: ", self.get_nodos_fechados())
+            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[0][i]) - 1]:
                 return True
         return False
     
@@ -269,7 +271,7 @@ class Puzzle8:
 
     def avalia_substituicao_fechados(self, nodo_filho):
         for i in range(len(self.get_nodos_fechados())):
-            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[i]) - 1] == nodo_filho:
+            if nodo_filho in self.get_nodos_fechados()[i][len(self.get_nodos_fechados()[0][i]) - 1]:
                 custo_total_nodo_em_fechados = self.get_nodos_fechados()[i][3]
                 caminho = self.atribui_custos_ao_nodo(nodo_filho)
                 custo_total_nodo_filho = self.atribui_custos_ao_nodo(nodo_filho)[3]

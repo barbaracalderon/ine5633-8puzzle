@@ -6,7 +6,8 @@ from puzzle import Puzzle8
 # Barbara Calderon e Edmilson Domingues
 
 # configuracao_inicial = [1, 2, 3, 4, 9, 5, 7, 8, 6]
-configuracao_inicial = [1, 2, 3, 4, 5, 6, 7, 9, 8]
+# configuracao_inicial = [1, 2, 3, 4, 5, 6, 9, 7, 8]
+configuracao_inicial = [1, 2, 3, 9, 5, 6, 4, 7, 8]
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 metodo_utilizado = 2
 
@@ -53,6 +54,7 @@ while continua and puzzle.tem_abertos():
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
                 print()
+                print('1')
                 print("contador i: ", i)
                 print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
@@ -61,12 +63,14 @@ while continua and puzzle.tem_abertos():
                 puzzle.coloca_em_abertos(caminho) #
                 print("Nodos abertos : ", puzzle.get_nodos_abertos())
             else:
+                
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
+                    print()
+                    print('2')
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
                 else:
+                    print('3')
                     puzzle.avalia_substituicao_fechados(filhos[i])
-                    pass
-            # break
         print(f'Nodo da vez: {nodo_da_vez}')
         puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
 
