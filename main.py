@@ -51,14 +51,14 @@ while continua and puzzle.tem_abertos():
         filhos = puzzle.gera_nodos_filhos(estado)
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
-                print()
-                print("contador i: ", i)
-                print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
+                #print()
+                #print("contador i: ", i)
+                #print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
-                print("Nodos abertos 2: ", puzzle.get_nodos_abertos()) #errado
+                #print("Nodos abertos 2: ", puzzle.get_nodos_abertos()) #errado
                 #print("Caminho novo: ", caminho)
-                #puzzle.coloca_em_abertos(caminho) #
-                print("Nodos abertos 3: ", puzzle.get_nodos_abertos())
+                puzzle.coloca_em_abertos(caminho) #
+                print("Nodos abertos : ", puzzle.get_nodos_abertos())
             else:
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
@@ -66,8 +66,8 @@ while continua and puzzle.tem_abertos():
                     puzzle.avalia_substituicao_fechados(filhos[i])
                     pass
             # break
-        # break
-        puzzle.retira_de_abertos_coloca_em_fechados(nodo_da_vez)
+        break
+        puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
 
 if continua is True:
     print("Falha")
