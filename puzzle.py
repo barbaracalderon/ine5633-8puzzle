@@ -85,9 +85,9 @@ class Puzzle8:
         if len(self.nodos_fechados) == 0:
             return False
         for i in range(len(self.get_nodos_fechados())):
-            print("Nodo_filho: ", nodo_filho)
-            print("Nodos_fechados: ", self.get_nodos_fechados())
-            print("I: ", i)
+            #print("Nodo_filho: ", nodo_filho)
+            #print("Nodos_fechados: ", self.get_nodos_fechados())
+            #print("I: ", i)
             if nodo_filho in self.get_nodos_fechados()[i][0][len(self.get_nodos_fechados()[i][0]) - 1]: #$$
                 return True
         return False
@@ -153,7 +153,7 @@ class Puzzle8:
 
     def gera_nodos_filhos(self, estado):
         pai = estado
-        print("Pai: ", pai)
+        #print("Pai: ", pai)
         for i in range(9):
             if pai[i] == 9:
                 ordem = i
@@ -188,7 +188,7 @@ class Puzzle8:
                 [pai[0], pai[1], pai[2], pai[3], pai[4], pai[8], pai[6], pai[7], pai[5]]
             ],
             [
-                [pai[0], pai[1], pai[2], pai[6], pai[7], pai[5], pai[3], pai[7], pai[8]],
+                [pai[0], pai[1], pai[2], pai[6], pai[4], pai[5], pai[3], pai[7], pai[8]],
                 [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[7], pai[6], pai[8]]            ],
             [
                 [pai[0], pai[1], pai[2], pai[3], pai[7], pai[5], pai[6], pai[4], pai[8]],
@@ -200,7 +200,7 @@ class Puzzle8:
                 [pai[0], pai[1], pai[2], pai[3], pai[4], pai[5], pai[6], pai[8], pai[7]]
             ]
         ]
-        print("Nodos Filhos: ", nodos_filhos[ordem])
+        #print("Nodos Filhos: ", nodos_filhos[ordem])
         return nodos_filhos[ordem]
 
     def coloca_em_abertos(self, caminho):
@@ -253,7 +253,7 @@ class Puzzle8:
         nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
         #nodos_abertos[0] = nodo_aberto_com_menor_custo_total
         nodos_abertos.insert(0, nodo_aberto_com_menor_custo_total)
-        print("Cálculo nodos abertos: ", nodos_abertos)
+        #print("Cálculo nodos abertos: ", nodos_abertos)
         self.set_nodos_abertos(nodos_abertos)
         
     def avalia_substituicao_em_abertos(self, nodo_filho):
