@@ -258,7 +258,7 @@ class Puzzle8:
         
     def avalia_substituicao_em_abertos(self, nodo_filho):
         for i in range(len(self.get_nodos_abertos())):
-            if nodo_filho in self.get_nodos_abertos()[i][len(self.get_nodos_abertos()[i]) - 1] == nodo_filho:
+            if nodo_filho in self.get_nodos_abertos()[i][0][len(self.get_nodos_abertos()[0][i]) - 1] == nodo_filho:
                 custo_total_nodo_em_abertos = self.get_nodos_abertos()[i][3]
                 caminho = self.atribui_custos_ao_nodo(nodo_filho)
                 custo_total_nodo_filho = self.atribui_custos_ao_nodo(nodo_filho)[3]
