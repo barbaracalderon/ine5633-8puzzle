@@ -12,9 +12,9 @@ from puzzle import Puzzle8
 #configuracao_inicial = [2, 9, 3, 1, 5, 6, 4, 7, 8] # 5 passos.
 #configuracao_inicial = [2, 3, 9, 1, 5, 6, 4, 7, 8] # 6 passos.
 #configuracao_inicial = [2, 3, 6, 1, 5, 9, 4, 7, 8] # 7 passos.
-#configuracao_inicial = [2, 3, 6, 1, 9, 5, 4, 7, 8] # 8 passos.
+configuracao_inicial = [2, 3, 6, 1, 9, 5, 4, 7, 8] # 8 passos.
 #configuracao_inicial = [9, 1, 2, 5, 6, 3, 4, 7, 8] # 8 passos.
-configuracao_inicial = [2, 3, 9, 1, 4, 6, 7, 5, 8] # 8 passos.
+#configuracao_inicial = [2, 3, 9, 1, 4, 6, 7, 5, 8] # 8 passos.
 #configuracao_inicial = [6, 7, 5, 1, 2, 3, 9, 4, 8] # benchmark professor (18 passos previstos)
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 metodo_utilizado = 2
@@ -38,8 +38,8 @@ puzzle.set_nodos_fechados([])
 continua = True
 
 while continua and puzzle.tem_abertos():
-    print()
-    print("Nova iteração")
+    #$print()
+    #$print("Nova iteração")
     #$print(f'Total de nodos abertos: {puzzle.get_total_nodos_abertos()}')
     #$nodos_abertos = puzzle.get_nodos_abertos()
     #$for i in range(len(nodos_abertos)):
@@ -60,22 +60,26 @@ while continua and puzzle.tem_abertos():
         print(f'Caminho final: {puzzle.resultado()}')
         print(f'Tamanho do caminho: {puzzle.tamanho_do_caminho_final()}')
         print(f'Total de nodos abertos: {puzzle.get_total_nodos_abertos()}')
+        '''
         nodos_abertos = puzzle.get_nodos_abertos()
         for i in range(len(nodos_abertos)):
             print(nodos_abertos[i])
+        '''
         print(f'Total de nodos fechados: {puzzle.get_total_nodos_fechados()}')
+        '''
         nodos_fechados = puzzle.get_nodos_fechados()
         for i in range (len(nodos_fechados)):
             print(nodos_fechados[i])
+        '''
         #print(f'Nodos fechados: {puzzle.get_nodos_fechados()}')
         continua = False
     else:
         filhos = puzzle.gera_nodos_filhos(estado)
-        print("Filhos: ", filhos)
+        #$print("Filhos: ", filhos)
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
                 #print()
-                print('Passou em 1')
+                #$print('Passou em 1')
                 #print("contador i: ", i)
                 #print("Nodos abertos 1: ", puzzle.get_nodos_abertos()) # certo
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
@@ -91,7 +95,7 @@ while continua and puzzle.tem_abertos():
                 else:
                     print('Passou em 3')
                     puzzle.avalia_substituicao_fechados(filhos[i])
-        print(f'Nodo da vez: {nodo_da_vez}')
+        #$print(f'Nodo da vez: {nodo_da_vez}')
         puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
 
 if continua is True:
