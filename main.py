@@ -36,7 +36,10 @@ caminho_inicial = [[[configuracao_inicial], 0, heuristica, heuristica]]
 puzzle.set_nodos_abertos(caminho_inicial) ## correção
 puzzle.set_nodos_fechados([])
 continua = True
+iteracao = 0
 while continua and puzzle.tem_abertos():
+    iteracao += 1
+    print("Iteração: ", iteracao)
     '''
     print()
     print("Nova iteração")
@@ -88,11 +91,9 @@ while continua and puzzle.tem_abertos():
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
                     print()
                     print('Passou em 2')
-                    break
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
                 else:
                     print('Passou em 3')
-                    break
                     puzzle.avalia_substituicao_fechados(filhos[i])
         #print(f'Nodo da vez: {nodo_da_vez}')
         puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
