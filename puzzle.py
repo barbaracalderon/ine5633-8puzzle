@@ -1,4 +1,6 @@
 import copy
+
+
 class Puzzle8:
 
     def __init__(self, estado_inicial, estado_final, metodo_utilizado):

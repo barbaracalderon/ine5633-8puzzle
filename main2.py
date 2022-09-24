@@ -108,7 +108,7 @@ print(f'MÉTODO UTILIZADO: {metodo_utilizado} \n'
 print()
 time.sleep(1)
 print()
-print('======= INCÍCIO DO JOGO =======')
+print('============= [ INCÍCIO DO JOGO ] ============')
 print('Criando o tabuleiro com as peças de entrada...')
 print('Inicializando os cálculos...')
 
@@ -162,16 +162,16 @@ while continua and puzzle.tem_abertos():
         print('.')
         time.sleep(1)
         print('.')
+        print("RESULTADOS ..............")
         time.sleep(1)
-        print('.')
-        print(".............. RESULTADOS ..............")
+        print()
         print(f'1) CAMINHO FINAL: {puzzle.resultado()}')
         print(f'2) TAMANHO DO CAMINHO: {puzzle.tamanho_do_caminho_final()}')
         print(f'3) TOTAL DE NODOS ABERTOS: {puzzle.get_total_nodos_abertos()}')
         nodos_abertos = puzzle.get_nodos_abertos()
-        # for i in range(len(nodos_abertos)):
-        #     print(nodos_abertos[i])
-        print(f'TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
+        for i in range(len(nodos_abertos)):
+            print(nodos_abertos[i])
+        print(f'4 TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
         nodos_fechados = puzzle.get_nodos_fechados()
         for i in range(len(nodos_fechados)):
             print(nodos_fechados[i])
@@ -188,6 +188,9 @@ while continua and puzzle.tem_abertos():
                 else:
                     puzzle.avalia_substituicao_fechados(filhos[i])
         puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
+print()
+print('================== [ FIM ] ===================')
+
 
 if continua is True:
     print("Falha")
