@@ -171,7 +171,7 @@ while continua and puzzle.tem_abertos():
         nodos_abertos = puzzle.get_nodos_abertos()
         for i in range(len(nodos_abertos)):
             print(nodos_abertos[i])
-        print(f'4 TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
+        print(f'4) TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
         nodos_fechados = puzzle.get_nodos_fechados()
         for i in range(len(nodos_fechados)):
             print(nodos_fechados[i])
