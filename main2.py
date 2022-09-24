@@ -4,9 +4,9 @@ import time
 
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('================ [ JOGO PUZZLE 8 ] ===============')
-print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('============== [ JOGO PUZZLE 8 ] =============')
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('Bem-vindo(a)s ao jogo Puzzle8!')
 time.sleep(2)
 print()
@@ -25,8 +25,8 @@ time.sleep(1)
 print('OBS.: Objetivo no formato lista: [1, 2, 3, 4, 5, 6, 7, 8, 9]')
 print()
 print('Obs.: Para fins de jogo, entenda número "9" como \n'
-'sendo o espaço vazio do tabuleiro.\n'
-'\n')
+      'sendo o espaço vazio do tabuleiro.\n'
+      '\n')
 print('.')
 print('.')
 print('.')
@@ -40,37 +40,36 @@ print('.')
 print('.')
 print()
 
-
 tem_nove_digitos_errados = True
 digitos_aceitos = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 configuracao_inicial = []
 while tem_nove_digitos_errados:
-      configuracao_inicial_string = input('Digite a configuração inicial do jogo: ')
-      configuracao_inicial_split = configuracao_inicial_string.split(',')
-      for digito in configuracao_inicial_split:
-            digito = digito.strip()
-            if digito.isnumeric():
-                  digito_int = int(digito)
-                  if digito_int not in configuracao_inicial and digito_int in digitos_aceitos:
-                        configuracao_inicial.append(digito_int)
-      if len(configuracao_inicial) == 9:
-            print()
-            print('Considerando apenas os 9 primeiros caracteres numéricos válidos digitados...')
-            time.sleep(1)
-            print('.')
-            time.sleep(1)
-            print('.')
-            time.sleep(1)
-            print('.')
-            print('... CHECK!')
-            time.sleep(2)
-            tem_nove_digitos_errados = False
-      else:
-            print('\n... Dados inválidos. Digite números inteiros de 1 a 9, sem repetição.')
-            time.sleep(1)
-            del configuracao_inicial_string, configuracao_inicial_split, configuracao_inicial
-            configuracao_inicial = []
+    configuracao_inicial_string = input('Digite a configuração inicial do jogo: ')
+    configuracao_inicial_split = configuracao_inicial_string.split(',')
+    for digito in configuracao_inicial_split:
+        digito = digito.strip()
+        if digito.isnumeric():
+            digito_int = int(digito)
+            if digito_int not in configuracao_inicial and digito_int in digitos_aceitos:
+                configuracao_inicial.append(digito_int)
+    if len(configuracao_inicial) == 9:
+        print()
+        print('Considerando apenas os 9 primeiros caracteres numéricos válidos digitados...')
+        time.sleep(1)
+        print('.')
+        time.sleep(1)
+        print('.')
+        time.sleep(1)
+        print('.')
+        print('... CHECK!')
+        time.sleep(2)
+        tem_nove_digitos_errados = False
+    else:
+        print('\n... Dados inválidos. Digite números inteiros de 1 a 9, sem repetição.')
+        time.sleep(1)
+        del configuracao_inicial_string, configuracao_inicial_split, configuracao_inicial
+        configuracao_inicial = []
 
 print()
 print('CONFIGURAÇÃO INICIAL: \n'
@@ -88,19 +87,18 @@ metodos_aceitos_string = ['0', '1', '2']
 metodo_utilizado = -1
 
 while escolha_do_metodo_esta_errada:
-      metodo_escolhido = input('\nDigite o método desejado: ').strip()
+    metodo_escolhido = input('\nDigite o método desejado: ').strip()
 
-      if metodo_escolhido.isnumeric() and metodo_escolhido in metodos_aceitos_string:
-            metodo_utilizado = int(metodo_escolhido)
-            escolha_do_metodo_esta_errada = False
-      else:
-          print('\n... Dado inválido.\n')
-          time.sleep(1)
-          print('São 3 métodos de jogo:')
-          print(f'0 - custo uniforme\n'
-                f'1 - A* com uma heurística simples\n'
-                f'2 - A* com a heurística mais precisa alcançada')
-
+    if metodo_escolhido.isnumeric() and metodo_escolhido in metodos_aceitos_string:
+        metodo_utilizado = int(metodo_escolhido)
+        escolha_do_metodo_esta_errada = False
+    else:
+        print('\n... Dado inválido.\n')
+        time.sleep(1)
+        print('São 3 métodos de jogo:')
+        print(f'0 - custo uniforme\n'
+              f'1 - A* com uma heurística simples\n'
+              f'2 - A* com a heurística mais precisa alcançada')
 
 print()
 time.sleep(1)
@@ -113,15 +111,16 @@ print()
 print('============= [ INÍCIO DO JOGO ] ============')
 print('Criando o tabuleiro com as peças de entrada...')
 print('Inicializando os cálculos...')
+print()
 
 puzzle = Puzzle8(configuracao_inicial, configuracao_final, metodo_utilizado)
 
 if metodo_utilizado == 0:
-      heuristica = 0
+    heuristica = 0
 elif metodo_utilizado == 1:
-      heuristica = puzzle.calcula_heuristica_simples(configuracao_inicial)
+    heuristica = puzzle.calcula_heuristica_simples(configuracao_inicial)
 else:
-      heuristica = puzzle.calcula_heuristica_precisa(configuracao_inicial)
+    heuristica = puzzle.calcula_heuristica_precisa(configuracao_inicial)
 
 caminho_inicial = [[[configuracao_inicial], 0, heuristica, heuristica]]
 puzzle.set_nodos_abertos(caminho_inicial)
@@ -131,6 +130,15 @@ iteracao = 0
 
 while continua and puzzle.tem_abertos():
     iteracao += 1
+    resto = iteracao % 500
+    if resto == 0:
+        print('*')
+        print('*')
+        print('*')
+        print()
+        print(f'Iteração...')
+        print(iteracao)
+        print()
     '''
     print("Iteração: ", iteracao)
     print()
@@ -150,7 +158,7 @@ while continua and puzzle.tem_abertos():
     nodo_da_vez = puzzle.get_nodo_da_vez()
     estado = nodo_da_vez[0][len(nodo_da_vez[0]) - 1]
 
-    #print("Estado antes: ", estado)
+    # print("Estado antes: ", estado)
 
     if puzzle.eh_nodo_objetivo(estado):
         print()
@@ -165,7 +173,7 @@ while continua and puzzle.tem_abertos():
         time.sleep(1)
         print('.')
         print()
-        print("RESULTADOS ..............")
+        print(".. RESULTADOS ..............")
         time.sleep(1)
         print()
         print(f'1) CAMINHO FINAL: {puzzle.resultado()}')
@@ -184,7 +192,7 @@ while continua and puzzle.tem_abertos():
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
-                puzzle.coloca_em_abertos(caminho) #
+                puzzle.coloca_em_abertos(caminho)  #
             else:
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
@@ -194,10 +202,7 @@ while continua and puzzle.tem_abertos():
 print()
 print('================== [ FIM ] ===================')
 
-
 if continua is True:
     print("Falha")
 del puzzle
 gc.collect()
-
-
