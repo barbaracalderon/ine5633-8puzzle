@@ -173,7 +173,6 @@ while continua and puzzle.tem_abertos():
         time.sleep(1)
         print('.')
         print()
-        print("============= [ INÍCIO DO JOGO ] ============")
         print("... RESULTADOS ..............................")
         time.sleep(1)
         print()
