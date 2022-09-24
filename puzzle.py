@@ -213,6 +213,20 @@ class Puzzle8:
         nodos_abertos = self.get_nodos_abertos()
         nodos_abertos.append(caminho)
         self.set_nodos_abertos(nodos_abertos)
+
+    # def coloca_em_abertos(self, caminho):
+    #     nodos_abertos = self.get_nodos_abertos()
+    #     if len(nodos_abertos) > 0:
+    #         for nodo in nodos_abertos:
+    #             if caminho[3] < nodo[3]:
+    #                 nodos_abertos.insert(0, caminho)
+    #                 break
+    #             else:
+    #                 nodos_abertos.append(caminho)
+    #                 break
+    #     else:
+    #         nodos_abertos.append(caminho)
+    #     self.set_nodos_abertos(nodos_abertos)
         
     def aaa_busca_nodo_menor_custo(self):
         # Ordenação de acordo com o custo total
