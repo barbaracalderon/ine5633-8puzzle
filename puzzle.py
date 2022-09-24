@@ -118,6 +118,12 @@ class Puzzle8:
                 caminho[2] = heuristica
                 caminho[3] = caminho[1] + heuristica
         #print("Caminho depois: ", caminho)
+        vetor = 'Nivel: ' + str(caminho[1])
+        if len(caminho) == 4:
+            caminho.append(vetor)
+        else:
+            caminho.remove(caminho[4])
+            caminho.append(vetor)
         return caminho
                 
     def calcula_heuristica_simples(self, nodo_filho):
