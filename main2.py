@@ -110,7 +110,7 @@ print(f'MÉTODO UTILIZADO: {metodo_utilizado} \n'
 print()
 time.sleep(1)
 print()
-print('============= [ INCÍCIO DO JOGO ] ============')
+print('============= [ INÍCIO DO JOGO ] ============')
 print('Criando o tabuleiro com as peças de entrada...')
 print('Inicializando os cálculos...')
 
