@@ -139,26 +139,10 @@ while continua and puzzle.tem_abertos():
         print(f'Iteração...')
         print(iteracao)
         print()
-    '''
-    print("Iteração: ", iteracao)
-    print()
-    print("Nova iteração")
-    print(f'Total de nodos abertos: {puzzle.get_total_nodos_abertos()}')
-    nodos_abertos = puzzle.get_nodos_abertos()
-    for i in range(len(nodos_abertos)):
-        print(nodos_abertos[i])
-    print(f'Total de nodos fechados: {puzzle.get_total_nodos_fechados()}')
-    nodos_fechados = puzzle.get_nodos_fechados()
-    for i in range (len(nodos_fechados)):
-        print(nodos_fechados[i])
-    print(f'Nodos fechados: {puzzle.get_nodos_fechados()}')
-    '''
 
     puzzle.extrai_nodo_da_vez()
     nodo_da_vez = puzzle.get_nodo_da_vez()
     estado = nodo_da_vez[0][len(nodo_da_vez[0]) - 1]
-
-    # print("Estado antes: ", estado)
 
     if puzzle.eh_nodo_objetivo(estado):
         print()
@@ -202,7 +186,7 @@ while continua and puzzle.tem_abertos():
         for i in range(len(filhos)):
             if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
                 caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
-                puzzle.coloca_em_abertos(caminho)  #
+                puzzle.coloca_em_abertos(caminho)
             else:
                 if puzzle.esta_em_nodos_abertos(filhos[i]):
                     puzzle.avalia_substituicao_em_abertos(filhos[i])
@@ -212,7 +196,5 @@ while continua and puzzle.tem_abertos():
 print()
 print('================== [ FIM ] ===================')
 
-if continua is True:
-    print("Falha")
 del puzzle
 gc.collect()
