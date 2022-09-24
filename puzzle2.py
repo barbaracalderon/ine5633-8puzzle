@@ -58,11 +58,6 @@ class Puzzle8:
         self.nodo_da_vez = self.get_nodos_abertos()[0][len(self.nodos_abertos[0]) - 1]
         return self.nodo_da_vez
 
-    def ordena_nodos_abertos(self):
-        nodos_abertos_em_ordem = self.get_nodos_abertos()
-        nodos_abertos_em_ordem.sort()
-        return nodos_abertos_em_ordem
-
     def eh_nodo_objetivo(self, nodo_da_vez):
         return nodo_da_vez == self.get_estado_final()
 
