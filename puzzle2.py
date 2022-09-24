@@ -225,7 +225,7 @@ class Puzzle8:
                 else:
                     caminho_custoso = self.nodos_abertos.pop(i)
                     self.nodos_fechados.append(caminho_custoso)
-                    self.nodos_abertos.append(caminho)
+                    self.coloca_em_abertos(caminho)
                     break
 
     def avalia_substituicao_fechados(self, nodo_filho):
@@ -238,7 +238,7 @@ class Puzzle8:
                     break
                 else:
                     self.nodos_fechados.pop(i)
-                    self.nodos_abertos.append(caminho)
+                    self.coloca_em_abertos(caminho)
                     break
 
     def retira_de_nodo_da_vez_coloca_em_fechados(self, nodo_da_vez):
