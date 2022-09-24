@@ -54,6 +54,7 @@ while continua and puzzle.tem_abertos():
     print(f'Nodos fechados: {puzzle.get_nodos_fechados()}')
     '''
     #puzzle.busca_nodo_menor_custo()
+
     puzzle.extrai_nodo_da_vez()
     nodo_da_vez = puzzle.get_nodo_da_vez()
     estado = nodo_da_vez[0][len(nodo_da_vez[0]) -1]

@@ -209,13 +209,6 @@ class Puzzle8:
         #print("Nodos Filhos: ", nodos_filhos[ordem])
         return nodos_filhos[ordem]
 
-    '''
-    def coloca_em_abertos(self, caminho):
-        nodos_abertos = self.get_nodos_abertos()
-        nodos_abertos.append(caminho)
-        self.set_nodos_abertos(nodos_abertos)
-    '''
-
     def coloca_em_abertos(self, caminho):
         nodos_abertos = self.get_nodos_abertos()
         if len(nodos_abertos) > 0:
@@ -232,26 +225,8 @@ class Puzzle8:
         else:
             nodos_abertos.append(caminho)
         self.set_nodos_abertos(nodos_abertos)
-        
-    def aaa_busca_nodo_menor_custo(self):
-        # Ordenação de acordo com o custo total
-        nodos_abertos = self.get_nodos_abertos()
-        menor_custo_total_ate_agora = nodos_abertos[0][-1]
-        indice_nodo_menor_custo_total_ate_agora = 0
-        nodo_aberto_com_menor_custo_total = nodos_abertos[0]
-        for i, value in enumerate(nodos_abertos):
-            # caminho = value[0]
-            # custo = value[1]
-            # heuristica = value[2]
-            custo_total_nodo_atual = value[3]
-            if custo_total_nodo_atual < menor_custo_total_ate_agora:
-                menor_custo_total_ate_agora = custo_total_nodo_atual
-                indice_nodo_menor_custo_total_ate_agora = i
-                nodo_aberto_com_menor_custo_total = value
-        nodos_abertos.pop(indice_nodo_menor_custo_total_ate_agora)
-        nodos_abertos[0] = nodo_aberto_com_menor_custo_total
-        self.set_nodos_abertos(nodos_abertos)
 
+    '''
     def busca_nodo_menor_custo(self):
         # Ordenação de acordo com o custo total
         nodos_abertos = self.get_nodos_abertos()
@@ -280,6 +255,7 @@ class Puzzle8:
         nodos_abertos.insert(0, nodo_aberto_com_menor_custo_total)
         #print("Cálculo nodos abertos: ", nodos_abertos)
         self.set_nodos_abertos(nodos_abertos)
+    '''
         
     def avalia_substituicao_em_abertos(self, nodo_filho):
         for i in range(len(self.get_nodos_abertos())):
