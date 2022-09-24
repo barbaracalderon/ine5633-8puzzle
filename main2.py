@@ -4,7 +4,9 @@ import time
 
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-print('================ JOGO PUZZLE 8 ===============')
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('================ [ JOGO PUZZLE 8 ] ===============')
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('Bem-vindo(a)s ao jogo Puzzle8!')
 time.sleep(2)
 print()
@@ -162,6 +164,7 @@ while continua and puzzle.tem_abertos():
         print('.')
         time.sleep(1)
         print('.')
+        print()
         print("RESULTADOS ..............")
         time.sleep(1)
         print()
