@@ -8,7 +8,6 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('============== [ JOGO PUZZLE 8 ] =============')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('Bem-vindo(a)s ao jogo Puzzle8!')
-time.sleep(2)
 print()
 print('Objetivo do jogo: \n'
       '  1  |  2  |  3   \n'
@@ -16,12 +15,11 @@ print('Objetivo do jogo: \n'
       '  4  |  5  |  6   \n'
       '----- ----- ----- \n'
       '  7  |  8  |      \n')
-time.sleep(2)
+time.sleep(1)
 print('.')
 print('.')
 print('.')
 print()
-time.sleep(1)
 print('OBS.: Objetivo no formato lista: [1, 2, 3, 4, 5, 6, 7, 8, 9]')
 print()
 print('Obs.: Para fins de jogo, entenda número "9" como \n'
@@ -31,7 +29,6 @@ print('.')
 print('.')
 print('.')
 print()
-time.sleep(2)
 print('Informe a sua configuração de entrada a seguir...\n\n'
       'Exemplo: 1, 2, 3, 4, 5, 6, 7, 8, 9\n'
       'Obs.2: São 9 caracteres separados por vírgula.')
@@ -56,14 +53,10 @@ while tem_nove_digitos_errados:
     if len(configuracao_inicial) == 9:
         print()
         print('Considerando apenas os 9 primeiros caracteres numéricos válidos digitados...')
-        time.sleep(1)
         print('.')
-        time.sleep(1)
         print('.')
-        time.sleep(1)
         print('.')
         print('... CHECK!')
-        time.sleep(2)
         tem_nove_digitos_errados = False
     else:
         print('\n... Dados inválidos. Digite números inteiros de 1 a 9, sem repetição.')
@@ -94,19 +87,16 @@ while escolha_do_metodo_esta_errada:
         escolha_do_metodo_esta_errada = False
     else:
         print('\n... Dado inválido.\n')
-        time.sleep(1)
         print('São 3 métodos de jogo:')
         print(f'0 - custo uniforme\n'
               f'1 - A* com uma heurística simples\n'
               f'2 - A* com a heurística mais precisa alcançada')
 
 print()
-time.sleep(1)
 print(f'MÉTODO UTILIZADO: {metodo_utilizado} \n'
       f'Status: OK\n')
 
 print()
-time.sleep(1)
 print()
 print('============= [ INÍCIO DO JOGO ] ============')
 print('Criando o tabuleiro com as peças de entrada...')
@@ -146,15 +136,10 @@ while continua and puzzle.tem_abertos():
 
     if puzzle.eh_nodo_objetivo(estado):
         print()
-        time.sleep(1)
         print('.')
-        time.sleep(1)
         print('.')
-        time.sleep(1)
         print('.')
-        time.sleep(1)
         print('.')
-        time.sleep(1)
         print('.')
         print()
         print("... RESULTADOS ..............................")
@@ -170,16 +155,16 @@ while continua and puzzle.tem_abertos():
         print()
         print()
         nodos_abertos = puzzle.get_nodos_abertos()
-        for i in range(len(nodos_abertos)):
-            print(nodos_abertos[i])
+        # for i in range(len(nodos_abertos)):
+        #     print(nodos_abertos[i])
         print()
         print()
         print(f'4) TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
         print()
         print()
         nodos_fechados = puzzle.get_nodos_fechados()
-        for i in range(len(nodos_fechados)):
-            print(nodos_fechados[i])
+        # for i in range(len(nodos_fechados)):
+        #     print(nodos_fechados[i])
         continua = False
     else:
         filhos = puzzle.gera_nodos_filhos(estado)
