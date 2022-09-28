@@ -150,16 +150,16 @@ while continua and puzzle.tem_abertos():
         print()
         print()
         nodos_abertos = puzzle.get_nodos_abertos()
-        # for i in range(len(nodos_abertos)):
-        #     print(nodos_abertos[i])
+        for i in range(len(nodos_abertos)):
+            print(nodos_abertos[i])
         print()
         print()
         print(f'4) TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
         print()
         print()
         nodos_fechados = puzzle.get_nodos_fechados()
-        # for i in range(len(nodos_fechados)):
-        #     print(nodos_fechados[i])
+        for i in range(len(nodos_fechados)):
+            print(nodos_fechados[i])
         continua = False
     else:
         filhos = puzzle.gera_nodos_filhos(estado)
