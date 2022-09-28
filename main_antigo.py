@@ -1,6 +1,5 @@
 import gc
-from puzzle import Puzzle8
-import numpy as np
+from puzzle_antigo import Puzzle8
 
 # Trabalho Prático 1 - de Sistemas de Informações
 # Jogo 8-puzzle com heurística
@@ -17,9 +16,6 @@ configuracao_inicial = [1, 2, 3, 4, 5, 6, 7, 9, 8] # 1 passo
 #configuracao_inicial = [2, 3, 6, 1, 9, 5, 4, 7, 8] # 8 passos.
 #configuracao_inicial = [9, 1, 2, 5, 6, 3, 4, 7, 8] # 8 passos.
 configuracao_inicial = [6, 7, 5, 1, 2, 3, 9, 4, 8] # benchmark professor (18 passos previstos)
-lista_origem = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-configuracao_inicial = np.random.permutation(lista_origem)
-print("Configuração inicial: ", configuracao_inicial)
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 metodo_utilizado = 2
 
@@ -58,6 +54,7 @@ while continua and puzzle.tem_abertos():
     print(f'Nodos fechados: {puzzle.get_nodos_fechados()}')
     '''
     #puzzle.busca_nodo_menor_custo()
+
     puzzle.extrai_nodo_da_vez()
     nodo_da_vez = puzzle.get_nodo_da_vez()
     estado = nodo_da_vez[0][len(nodo_da_vez[0]) -1]
@@ -107,3 +104,4 @@ if continua is True:
     print("Falha")
 del puzzle
 gc.collect()
+
