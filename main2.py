@@ -1,6 +1,5 @@
 import gc
 from puzzle2 import Puzzle8
-import time
 
 configuracao_final = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -15,7 +14,6 @@ print('Objetivo do jogo: \n'
       '  4  |  5  |  6   \n'
       '----- ----- ----- \n'
       '  7  |  8  |      \n')
-time.sleep(1)
 print('.')
 print('.')
 print('.')
@@ -60,7 +58,6 @@ while tem_nove_digitos_errados:
         tem_nove_digitos_errados = False
     else:
         print('\n... Dados inválidos. Digite números inteiros de 1 a 9, sem repetição.')
-        time.sleep(1)
         del configuracao_inicial_string, configuracao_inicial_split, configuracao_inicial
         configuracao_inicial = []
 
@@ -69,7 +66,6 @@ print('CONFIGURAÇÃO INICIAL: \n'
       f'{configuracao_inicial}\n'
       f'Status: OK')
 print()
-time.sleep(1)
 print('São 3 métodos de jogo:')
 print(f'0 - custo uniforme\n'
       f'1 - A* com uma heurística simples\n'
@@ -143,7 +139,6 @@ while continua and puzzle.tem_abertos():
         print('.')
         print()
         print("... RESULTADOS ..............................")
-        time.sleep(1)
         print()
         print(f'1) CAMINHO FINAL: {puzzle.resultado()}')
         print()
