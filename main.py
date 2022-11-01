@@ -142,36 +142,37 @@ while continua and puzzle.tem_abertos():
         print()
         print(f'1) CAMINHO FINAL: {puzzle.resultado()}')
         print()
-        print()
+        # print()
         print(f'2) TAMANHO DO CAMINHO: {puzzle.tamanho_do_caminho_final()}')
         print()
-        print()
+        # print()
         print(f'3) TOTAL DE NODOS ABERTOS: {puzzle.get_total_nodos_abertos()}')
         print()
-        print()
-        nodos_abertos = puzzle.get_nodos_abertos()
-        for i in range(len(nodos_abertos)):
-            print(nodos_abertos[i])
-        print()
-        print()
+        # print()
+        # nodos_abertos = puzzle.get_nodos_abertos()
+        # for i in range(len(nodos_abertos)):
+        #     print(nodos_abertos[i])
+        # print()
+        # print()
         print(f'4) TOTAL DE NODOS FECHADOS: {puzzle.get_total_nodos_fechados()}')
         print()
-        print()
-        nodos_fechados = puzzle.get_nodos_fechados()
-        for i in range(len(nodos_fechados)):
-            print(nodos_fechados[i])
+        # print()
+        # nodos_fechados = puzzle.get_nodos_fechados()
+        # for i in range(len(nodos_fechados)):
+        #     print(nodos_fechados[i])
         continua = False
     else:
         filhos = puzzle.gera_nodos_filhos(estado)
         for i in range(len(filhos)):
-            if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
-                caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
-                puzzle.coloca_em_abertos(caminho)
-            else:
-                if puzzle.esta_em_nodos_abertos(filhos[i]):
-                    puzzle.avalia_substituicao_em_abertos(filhos[i])
+            if filhos[i] not in nodo_da_vez[0]:
+                if not puzzle.esta_em_nodos_abertos(filhos[i]) and not puzzle.esta_em_nodos_fechados(filhos[i]):
+                    caminho = puzzle.atribui_custos_ao_nodo(filhos[i])
+                    puzzle.coloca_em_abertos(caminho)
                 else:
-                    puzzle.avalia_substituicao_fechados(filhos[i])
+                    if puzzle.esta_em_nodos_abertos(filhos[i]):
+                        puzzle.avalia_substituicao_em_abertos(filhos[i])
+                    else:
+                        puzzle.avalia_substituicao_fechados(filhos[i])
         puzzle.retira_de_nodo_da_vez_coloca_em_fechados(nodo_da_vez)
 print()
 print('================== [ FIM ] ===================')
